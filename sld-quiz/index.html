@@ -11,8 +11,11 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       
-      // Only initialize Google Ads for retargeting
-      gtag('config', 'AW-16886526771');
+      // Initialize Google Ads with remarketing disabled
+      gtag('config', 'AW-16886526771', {
+        'allow_custom_scripts': true,
+        'send_page_view': false
+      });
 
       // Global flag to prevent double conversion
       var hasConversionFired = false;
@@ -29,7 +32,8 @@
       gtag('event', 'conversion', {
           'send_to': 'AW-16886526771/7rIGCLHdkrkaELPmj_Q-',
           'value': 1.0,
-          'currency': 'USD'
+          'currency': 'USD',
+          'transport_url': 'https://www.googleadservices.com/pagead/conversion/16886526771/'
       });
 
       window.location.href = url;
