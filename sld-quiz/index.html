@@ -4,27 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Loan Relief Options - Check Your Eligibility</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16886526771"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      
-      // Initialize Google Ads without automatic tracking
-      gtag('config', 'AW-16886526771', {
-        'allow_enhanced_conversions': false,
-        'send_page_view': false
-      });
-    </script>
     <!-- Event snippet for Sign Up conversion -->
     <script>
     function gtag_report_conversion(url) {
-      // Send conversion event directly
-      var img = new Image();
-      img.src = 'https://www.googleadservices.com/pagead/conversion/16886526771/?value=1.0&currency_code=USD&label=7rIGCLHdkrkaELPmj_Q-&guid=ON&script=0';
+      // Create the conversion pixel
+      var conversionPixel = document.createElement('img');
+      conversionPixel.style.display = 'none';
+      conversionPixel.src = 'https://www.googleadservices.com/pagead/conversion/16886526771/?random=' + Math.random() + '&value=1.0&currency_code=USD&label=7rIGCLHdkrkaELPmj_Q-&guid=ON&script=0';
+      document.body.appendChild(conversionPixel);
       
-      // Redirect after a short delay
+      // Handle the redirect
       setTimeout(function() {
         window.location.href = url;
       }, 100);
