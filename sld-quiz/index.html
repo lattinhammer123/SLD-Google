@@ -11,32 +11,24 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       
-      // Initialize Google Ads with remarketing disabled
+      // Initialize Google Ads without automatic tracking
       gtag('config', 'AW-16886526771', {
-        'allow_custom_scripts': true,
+        'allow_enhanced_conversions': false,
         'send_page_view': false
       });
-
-      // Global flag to prevent double conversion
-      var hasConversionFired = false;
     </script>
     <!-- Event snippet for Sign Up conversion -->
     <script>
     function gtag_report_conversion(url) {
-      if (hasConversionFired) {
-        window.location.href = url;
-        return false;
-      }
+      // Send conversion event directly
+      var img = new Image();
+      img.src = 'https://www.googleadservices.com/pagead/conversion/16886526771/?value=1.0&currency_code=USD&label=7rIGCLHdkrkaELPmj_Q-&guid=ON&script=0';
       
-      hasConversionFired = true;
-      gtag('event', 'conversion', {
-          'send_to': 'AW-16886526771/7rIGCLHdkrkaELPmj_Q-',
-          'value': 1.0,
-          'currency': 'USD',
-          'transport_url': 'https://www.googleadservices.com/pagead/conversion/16886526771/'
-      });
-
-      window.location.href = url;
+      // Redirect after a short delay
+      setTimeout(function() {
+        window.location.href = url;
+      }, 100);
+      
       return false;
     }
     </script>
@@ -1447,7 +1439,7 @@
                         ratag('conversion', {to: 2365});
                         
                         // Track Google conversion and redirect
-                        gtag_report_conversion(phoneUrl);
+                        return gtag_report_conversion(phoneUrl);
                     };
                     
                     callBubble.appendChild(callLink);
@@ -1631,7 +1623,7 @@
                         ratag('conversion', {to: 2365});
                         
                         // Track Google conversion and redirect
-                        gtag_report_conversion(phoneUrl);
+                        return gtag_report_conversion(phoneUrl);
                     };
                     
                     callBubble.appendChild(callLink);
@@ -1790,7 +1782,7 @@
                 ratag('conversion', {to: 2365});
                 
                 // Track Google conversion and redirect
-                gtag_report_conversion(phoneUrl);
+                return gtag_report_conversion(phoneUrl);
             };
         }
 
